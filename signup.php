@@ -9,7 +9,7 @@
         <main>
 			<div class="wrapper-main">
 				<section class="section-default">
-					<h1>משתמש חדש</h1>
+				<h1>משתמש חדש</h1>
 					<form class="signup" action="includes/signup.inc.php" method="post">
 						<input type="text" name="name" placeholder="שם" autofocus required>
 						<input type="text" name="lastname" placeholder="שם משפחה" required>

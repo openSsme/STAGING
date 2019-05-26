@@ -30,7 +30,7 @@
 							<option value="3">מבוגר</option>
 							<option value="4">זקן</option>
 						</select>
-						<select name="color">
+							<select name="color">
 							<option value="FF">צבע</option>
 							<option value="1">לבן</option>
 							<option value="2">שחור</option>
