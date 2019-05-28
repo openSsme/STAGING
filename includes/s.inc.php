@@ -47,8 +47,9 @@ if (isset($_SESSION['UID'])){
 
 		if($row = mysqli_fetch_all($result)){
 
-			//for each retreived row display a profile on the page with
-			//a add to favorites button and a tooltip with more info
+			//for each retreived row display an image on the page with
+			//a add to favorites button and a tooltip with more info..
+			//also display a popup for each image on mouse click
 
 			for ($i = 0; $i < $rows;){
 
@@ -56,13 +57,13 @@ if (isset($_SESSION['UID'])){
 
 					echo "<div class='entry'>";
 					echo "	<form class='content' action='includes/fav.inc.php' method='post'>";
-					echo "		<a class='button' href='#popup".$i."'>";$i++;
+					echo "		<a class='button' href='#popup".$i."'>";$i++; //iterate to support individual popups
 					echo "			<img src='images/".$col[16]."' style='height:300px;border-radius:7px;'>";
 					echo "		</a>";
 					echo "		<button type='submit' name='fav' value='".$col[0]."'>";
 					echo "			<img src='images/star.png' id='addfav' height='30' />";
 					echo "		</button>";
-					echo "		<span class='tooltip-dtls'>";
+					echo "		<span class='tooltip-dtls'>"; //tooltip
 					echo "		<b>שם:</b> ".$col[13]."<br>";
 					echo "		<b>מיקום:</b> ".$col[1]."<br>";
 					echo "		<b>גיל:</b> ".$col[2]."<br>";
@@ -80,7 +81,7 @@ if (isset($_SESSION['UID'])){
 
 				foreach ($row as $pop){
 
-					echo "<div id='popup".$j."' class='overlay'>";$j++;
+					echo "<div id='popup".$j."' class='overlay'>";$j++; //iterate to support individual popups
 					echo "	<div class='popup'>";
 					echo "		<h2>בחרת חבר חדש לחיים!!</h2>";
 					echo "		<a class='close' href='#'>&times;</a>";
