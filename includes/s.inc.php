@@ -1,4 +1,4 @@
-."<?php //display matches:
+<?php //display matches:
 
 //check if session started
 if (isset($_SESSION['UID'])){
@@ -30,7 +30,7 @@ if (isset($_SESSION['UID'])){
 	}
 	if (!mysqli_stmt_prepare($stmt, $que2)){
 
-		header("location:../index.php?error=sqlerror");
+		header("location:../results.php?error=sqlerror");
 		exit();
 
 	}
@@ -44,6 +44,7 @@ if (isset($_SESSION['UID'])){
 
 		$result = mysqli_stmt_get_result($stmt);
 		$rows = mysqli_num_rows($result);
+
 
 		if($row = mysqli_fetch_all($result)){
 
@@ -103,8 +104,10 @@ if (isset($_SESSION['UID'])){
 					echo "				<a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'>- טיפים לאילוף</a><br>";
 					echo "				<a href='http://www.teaenergy.com/information/effects-of-tree-bark-in-herbal-teas/'>- מאפייני הגזע</a><br>";
 					echo "				<a href='https://freemaninstitute.com/uselessFacts.htm'>- מידע כללי</a><br><br><br>";
-					echo "				<a href='index.php'><button>חזור לדף תוצאות</button></a><br>";
-					echo "				<a href='adopt.php'><button>המשך לאימוץ</button></a>";
+					echo "				<a href='results.php'><button>חזור לדף תוצאות</button></a><br>";
+					echo "				<form class='action' action='adopt.php' method='post'>";
+					echo "					<button type='submit' name='adopt' value='".$pop[0]."'>המשך לאימוץ</button>";
+					echo "				</form>";
 					echo "			</div>";
 					echo "			<img src='images/".$pop[16]."'>";
 					echo "		</div>";

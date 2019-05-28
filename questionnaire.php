@@ -11,7 +11,7 @@ session_start();
 <body>
   <main>
     <div class="wrapper-main">
-      <section class="section-Q">
+      <section class="section-Questionnaire">
         <h1>שאלון הכרות</h1>
         <h3>כיוון שאנו רוצים למצוא את ההתאמה הטובה ביותר עבורך ועבור הכלבים שלנו, נשמח שתענה על שאלון שיעזור לנו לחדד עבורך את התוצאות:</h3>
       </section><br>

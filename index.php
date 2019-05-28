@@ -1,22 +1,17 @@
-<!DOCTYPE html>
+<!DOCTYPE html> <!--start-->
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>LogIn</title>
+  <title>Landing</title>
   <link href="stylesheet.css" rel=stylesheet type="text/css"/>
 </head>
 <body>
   <main>
     <div class="wrapper-main">
-      <h1>ריכוז תוצאות</h1>
-      <section class="section-results">
-          <?php
-          session_start();
-          require "includes/s.inc.php";
-          ?>
-        <div>
-          <a href="favorites.php"><button>המשך</button></a>
-        </div>
+      <section class="section-default">
+        <h1>האם יש לך כבר חשבון אצלנו?</h1>
+        <a href="login.php"><button>להתחברות</button></a>
+        <a href="signup.php"><button>להרשמה</button></a>
       </section>
     </div>
   </main>

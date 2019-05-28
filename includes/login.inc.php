@@ -10,7 +10,7 @@ if (isset($_POST['login-submit'])){
 	$pas = $_POST['password'];
 	$que = "SELECT * FROM users WHERE email=?";
 	$stmt = mysqli_stmt_init($conn);
-	
+
 	//email format validation
 	if (!filter_var($ema, FILTER_VALIDATE_EMAIL)){
 
@@ -52,7 +52,7 @@ if (isset($_POST['login-submit'])){
 					//$_SESSION['EMA'] = $row['email'];
 
 					//continue
-					header("location:../index.php?login=success");
+					header("location:../results.php?login=success");
 					exit();
 
 				}

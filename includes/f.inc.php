@@ -5,11 +5,10 @@ if (isset($_SESSION['UID'])){
 
 	require 'dbh.inc.php';
 
-	$que1 = 'SELECT tag FROM favorites WHERE email=?';
-	$que2 = 'SELECT * FROM dogs WHERE tag IN ';
+	$que = 'SELECT tag FROM favorites WHERE email=?';
 	$stmt = mysqli_stmt_init($conn);
 
-	if (!mysqli_stmt_prepare($stmt, $que1)){
+	if (!mysqli_stmt_prepare($stmt, $que)){
 
 		header("location:../favorites.php?error=sqlerror");
 		exit();
@@ -45,50 +44,26 @@ if (isset($_SESSION['UID'])){
 				echo "			</button>";
 				echo "	</form>";
 				echo "</div>";
-				echo "	<div class='nav'>";
-				echo "		<a href='index.php'><button>חזור לדף תוצאות</button></a><br>";
-				echo "		<a href='adopt.php'><button>המשך לאימוץ</button></a>";
-				echo "	</div>";
+				echo "<div class='nav'>";
+				echo "	<a href='results.php'><button>חזור לדף תוצאות</button></a><br>";
+				echo "	<form class='action' action='adopt.php' method='post'>";
+				echo "			<button type='submit' name='adopt2' value='".$col[0]."'>המשך לאימוץ</button></a>";
+				echo "	</form>";
+				echo "</div>";
 
 			}
 			echo "</div>";
+
 		}
 		else{
+
 			echo "BLANK PAGE OF DOOM";
 			exit();
-		}
-		
-
-	}
-/*
-	if (!mysqli_stmt_prepare($stmt, $que2)){
-
-		header("location:../favorites.php?error=sqlerror2");
-		exit();
-
-	}
-	else{
-
-		//set hebrew support when pulling data from table
-		mysqli_set_charset($conn, "utf8");
-
-		mysqli_stmt_bind_param($stmt, 's', $list);
-		mysqli_stmt_execute($stmt);
-
-		$result = mysqli_stmt_get_result($stmt);
-		$row = mysqli_fetch_all($result);
-		echo $list;
-		//print_r($result);
-		foreach ($row as $col){
-
-			echo "<div class='entry'>";
-			echo "	<img src='images/".$col[16]."' class='image'>";
-			echo "</div>";
 
 		}
 
 	}
-*/
+
 }
 else{
 

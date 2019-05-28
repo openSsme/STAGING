@@ -8,7 +8,7 @@ if (isset($_POST['fav'])){
 
 	if (!mysqli_stmt_prepare($stmt, $que)){
 
-		header("location:../index.php?error=sqlerror");
+		header("location:../results.php?error=sqlerror");
 		exit();
 
 	}
@@ -19,7 +19,7 @@ if (isset($_POST['fav'])){
 		mysqli_stmt_execute($stmt);
 
 		//continue
-		header("location:../index.php?addedfav");
+		header("location:../results.php?addedfav");
 		exit();
 
 	}
