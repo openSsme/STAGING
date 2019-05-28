@@ -4,24 +4,12 @@
 if (isset($_POST['q-submit'])){
 
 	require 'dbh.inc.php';
-	
-	$sta = $_POST['status'];
-	$loc = $_POST['location'];
-	$hom = $_POST['home'];
-	$fam = $_POST['family'];
-	$pet = $_POST['pets'];
-	$alo = $_POST['alonetime'];
-	$fir = $_POST['firsttime'];
-	$rea = $_POST['reachout'];
-	$fin = $_POST['financial'];
-	$ava = $_POST['availability'];
-	$rsn = $_POST['reason'];
-	$cha = $_POST['challenges'];
-	$tra = $_POST['trainer'];
-	$lon = $_POST['longterm'];
-	$set = "";
-	$set .= $sta . $loc . $hom . $fam . $pet . $alo . $fir . $rea . $fin . $ava . $rsn . $cha . $tra . $lon;
-	
+
+	$set .=
+		$_POST['status'] . $_POST['location'] . $_POST['home'] .$_POST['family'] . $_POST['pets'] .
+		$_POST['alonetime'] . $_POST['firsttime'] . $_POST['reachout'] . $_POST['financial'] . $_POST['availability'] .
+		$_POST['reason'] . $_POST['challenges'] . $_POST['trainer'] . $_POST['longterm'];
+
 	$que = 'UPDATE users SET settings=? WHERE id=?';
 	$stmt = mysqli_stmt_init($conn);
 	//echo $set;

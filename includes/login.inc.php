@@ -22,55 +22,55 @@ if (isset($_POST['login-submit'])){
 	else if (!preg_match("/^[a-zA-Z0-9]*$/", $pas) || strlen($pas) > 8 || strlen($pas) < 5){
 
 		header("location:../login.php?error=invalidpass");
-		exit();			
+		exit();
 
 	}
 	else{
-			//db error handling
-			if (!mysqli_stmt_prepare($stmt, $que)){
+		//db error handling
+		if (!mysqli_stmt_prepare($stmt, $que)){
 
-				header("location:../login.php?error=sqlerror");
-				exit();
+			header("location:../login.php?error=sqlerror");
+			exit();
 
-			}
-			else{
+		}
+		else{
 
-				//safely bind parameters and execute query
-				mysqli_stmt_bind_param($stmt, 's', $ema);
-				mysqli_stmt_execute($stmt);
-				$result = mysqli_stmt_get_result($stmt);
+			//safely bind parameters and execute query
+			mysqli_stmt_bind_param($stmt, 's', $ema);
+			mysqli_stmt_execute($stmt);
+			$result = mysqli_stmt_get_result($stmt);
 
-				//check if email is in db
-				if ($row = mysqli_fetch_assoc($result)){
+			//check if email is in db
+			if ($row = mysqli_fetch_assoc($result)){
 
-					//match entered password with hash from db
-					if (password_verify($pas, $row['password'])){
+				//match entered password with hash from db
+				if (password_verify($pas, $row['password'])){
 
-						//start session and continue
-						session_start();
-						$_SESSION['UID'] = $row['id'];
-						//$_SESSION['EMA'] = $row['email'];
+					//start session and continue
+					session_start();
+					$_SESSION['UID'] = $row['id'];
+					//$_SESSION['EMA'] = $row['email'];
 
-						//continue
-						header("location:../index.php?login=success");
-						exit();
-						
-					}
-					else{
-
-						header("location:../login.php?error=wrongpass");
-						exit();
-
-					}
-				}
-				else{
-					//die("existential crisis");
-					header("location:../login.php?error=usernotexists");
+					//continue
+					header("location:../index.php?login=success");
 					exit();
 
 				}
+				else{
+
+					header("location:../login.php?error=wrongpass");
+					exit();
+
+				}
+			}
+			else{
+				//die("existential crisis");
+				header("location:../login.php?error=usernotexists");
+				exit();
 
 			}
+
+		}
 	}
 	//clean up
 	mysqli_stmt_close($stmt);
@@ -83,5 +83,3 @@ else{
 	exit();
 
 }
-
-

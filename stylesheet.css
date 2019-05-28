@@ -43,10 +43,6 @@ footer{
     display: inline-block;
     background-clip: padding-box
 }
-.content #dog{
-    height: 300px;
-    border-radius: 7px;
-}
 .entry button{
     position: relative;
     bottom: 240px;
@@ -98,7 +94,7 @@ footer{
     position: relative;
 }
 .entry .nav{
-    
+
 }
 .content .button{
     font-size: 1em;

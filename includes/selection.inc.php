@@ -5,14 +5,8 @@ if (isset($_POST['submit-selection'])){
 
 	require 'dbh.inc.php';
 
-	$are = $_POST['area'];
-	$age = $_POST['age'];
-	$col = $_POST['color'];
-	$sex = $_POST['sex'];
-	$siz = $_POST['size'];
-	$hom = $_POST['homefit'];
-	$prf = "";
-	$prf .= $are . $age . $col . $sex . $siz . $hom;
+	$prf .= $_POST['area'] . $_POST['age'] . $_POST['color'] . $_POST['sex'] . $_POST['size'] . $_POST['homefit'];
+	
 	$que = 'UPDATE users SET pref=? where id=?';
 	$stmt = mysqli_stmt_init($conn);
 
@@ -37,7 +31,7 @@ if (isset($_POST['submit-selection'])){
 	mysqli_close($conn);
 
 
-	
+
 
 }
 else{
