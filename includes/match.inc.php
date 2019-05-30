@@ -88,7 +88,7 @@ if (isset($_SESSION['UID'])){
 				echo "				<b>מצב מנטלי:</b> ".$pop[10]."<br>";
 				echo "				<b>חיסונים:</b> ".$pop[11]."<br>";
 				echo "				<b>סירוס/עיקור:</b> ".$pop[12]."<br><br><br>";
-				echo "				<a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'>- טיפים לאילוף</a><br><br><br>";
+				echo "				<a href='https://www.youtube.com/watch?v=67QMzqqH1no'>- טיפים לאילוף</a><br><br><br>";
 				echo "				<a href='results.php'><button>חזור לדף תוצאות</button></a><br>"; //close the popup
 				echo "				<form class='action' action='adopt.php' method='post'>";
 				echo "					<button type='submit' name='adopt' value='".$pop[0]."'>המשך לאימוץ</button>"; //use this specific entry as reference for adoption - continue to adopt.php
