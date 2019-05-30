@@ -12,7 +12,7 @@
       <h1>ריכוז תוצאות</h1>
       <section class="section-results">
           <?php
-          require "includes/s.inc.php";
+          require "includes/match.inc.php";
           ?>
           <br>
           <a href="favorites.php"><button id="continue">המשך</button></a>

@@ -13,7 +13,7 @@
       <section class="section-favorites">
         <div class="profile">
           <?php
-          require "includes/f.inc.php";
+          require "includes/list_favorites.inc.php";
           ?>
         </div>
       </section>

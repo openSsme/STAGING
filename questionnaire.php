@@ -13,7 +13,8 @@
         <h1>שאלון הכרות</h1>
         <h3>כיוון שאנו רוצים למצוא את ההתאמה הטובה ביותר עבורך ועבור הכלבים שלנו, נשמח שתענה על שאלון שיעזור לנו לחדד עבורך את התוצאות:</h3>
       </section><br>
-      <form class="signup" action="includes/q.inc.php" method="post">
+      <form class="signup" action="includes/concat.inc.php" method="post">
+        <!-- devide questions into 4 sections for better display-->
         <section class="section-Q">
           <select name="status">
             <option value="FF">מצב משפחתי</option>
@@ -51,6 +52,7 @@
             <option value="9">9+</option>
           </select>
         </section>
+        <!-- new section -->
         <section class="section-Q">
           <select name="pets">
             <option value="FF">האם קיימים בעלי חיים נוספים בבית? במידה וכן אנא בחר את בעל החיים</option>
@@ -80,6 +82,7 @@
             <option value="4">לא פניתי מעולם לאימוץ</option>
           </select>
         </section>
+        <!-- new section -->
         <section class="section-Q">
           <select name="financial">
             <option value="FF">כיצד היית מגדיר את מצבך הכלכלי?</option>
@@ -106,6 +109,7 @@
             <option value="2">לא</option>
           </select>
         </section>
+        <!-- new section -->
         <section class="section-Q">
           <select name="trainer">
             <option value="FF">מספר שעות העבודה של המטפל העיקרי בכלב</option>
