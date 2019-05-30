@@ -6,10 +6,9 @@ if (isset($_POST['login-submit'])){
 
 	require 'dbh.inc.php';
 
+	//store user input
 	$ema = $_POST['email'];
 	$pas = $_POST['password'];
-	$que = "SELECT * FROM users WHERE email=?";
-	$stmt = mysqli_stmt_init($conn);
 
 	//email format validation
 	if (!filter_var($ema, FILTER_VALIDATE_EMAIL)){
@@ -26,59 +25,47 @@ if (isset($_POST['login-submit'])){
 
 	}
 	else{
-		//db error handling
-		if (!mysqli_stmt_prepare($stmt, $que)){
 
-			header("location:../login.php?error=sqlerror");
-			exit();
+		//set and execute SELECT query for users table
+		$query = 'SELECT * FROM users WHERE email="'.$ema.'"';
+		$result = mysqli_query($conn, $query);
 
-		}
-		else{
+		//check if email is in db
+		if ($row = mysqli_fetch_row($result)){
 
-			//safely bind parameters and execute query
-			mysqli_stmt_bind_param($stmt, 's', $ema);
-			mysqli_stmt_execute($stmt);
-			$result = mysqli_stmt_get_result($stmt);
+			//match entered password with hash from db
+			if (password_verify($pas, $row[6])){
 
-			//check if email is in db
-			if ($row = mysqli_fetch_assoc($result)){
+				//start session and continue
+				session_start();
+				$_SESSION['UID'] = $row[0];
+				header("location:../results.php?login=success");
+				exit();
 
-				//match entered password with hash from db
-				if (password_verify($pas, $row['password'])){
-
-					//start session and continue
-					session_start();
-					$_SESSION['UID'] = $row['id'];
-					//$_SESSION['EMA'] = $row['email'];
-
-					//continue
-					header("location:../results.php?login=success");
-					exit();
-
-				}
-				else{
-
-					header("location:../login.php?error=wrongpass");
-					exit();
-
-				}
 			}
 			else{
-				//die("existential crisis");
-				header("location:../login.php?error=usernotexists");
+
+				//wrong password
+				header("location:../login.php?error=wrongpass");
 				exit();
 
 			}
 
 		}
+		else{
+
+			//email not in db
+			header("location:../login.php?error=emailnotexists");
+			exit();
+
+		}
+
 	}
-	//clean up
-	mysqli_stmt_close($stmt);
-	mysqli_close($conn);
+
 }
 else{
 
-	//getting lost often?
+	//if user did not click submit button, do nothing
 	header("location:../login.php");
 	exit();
 

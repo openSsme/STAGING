@@ -76,7 +76,7 @@ if (isset($_POST['form-submit'])){
 			VALUES ("'.$nam.'", "'.$las.'", "'.$age.'", "'.$pho.'", "'.$ema.'", "'.$pwdHash.'")';
 			mysqli_query($conn, $query);
 
-			//configure session id - use the value stored in the first column of the new row
+			//configure session id - use the value stored in the first column of the new row we just inserted
 			$query = 'SELECT id FROM users WHERE email="'.$ema.'"';
 			$result = mysqli_query($conn, $query);
 			$row = mysqli_fetch_row($result);
