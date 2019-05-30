@@ -1,42 +1,31 @@
-<?php //select a dog and set a preference value in users table
+<?php //concatenate all user input and update column "pref" in table dogs
+			//with the result where user id match session id
 
 //check if submit button clicked
 if (isset($_POST['submit-selection'])){
 
+	//db connection settings
 	require 'dbh.inc.php';
 
-	$prf .= $_POST['area'] . $_POST['age'] . $_POST['color'] . $_POST['sex'] . $_POST['size'] . $_POST['homefit'];
+	//store user input
+	$prf .=
+	$_POST['area'] . $_POST['age'] .
+	$_POST['color'] . $_POST['sex'] .
+	$_POST['size'] . $_POST['homefit'];
 
-	$que = 'UPDATE users SET pref=? where id=?';
-	$stmt = mysqli_stmt_init($conn);
+	//set and execute UPDATE query, use $conn as connection settings
+	session_start();
+	$query = 'UPDATE users SET pref="'.$prf.'" WHERE id="'.$_SESSION['UID'].'"';
+	mysqli_query($conn, $query);
 
-	if (!mysqli_stmt_prepare($stmt, $que)){
-
-		header("location:../selection.php?error=sqlerror");
-		exit();
-
-	}
-	else{
-		//safely bind parameters and execute query
-		session_start();
-		mysqli_stmt_bind_param($stmt, 'ii', $prf, $_SESSION['UID']);
-		mysqli_stmt_execute($stmt);
-
-		//continue
-		header("location:../results.php?done");
-		exit();
-	}
-	//clean up
-	mysqli_stmt_close($stmt);
-	mysqli_close($conn);
-
-
-
+	//continue
+	header("location:../results.php?done");
+	exit();
 
 }
 else{
 
-	//getting lost often?
+	//if user came here not by clicking submit, do nothing
 	header("location:../questionnaire.php");
 	exit();
 

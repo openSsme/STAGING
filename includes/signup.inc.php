@@ -1,18 +1,18 @@
 <?php //insert new user into db:
 
-//check if submit button clicked
+//check if user clicked submit
 if (isset($_POST['form-submit'])){
 
+	//db connection settings
 	require 'dbh.inc.php';
 
+	//store user input
 	$nam = $_POST['name'];
 	$las = $_POST['lastname'];
 	$age = $_POST['age'];
 	$pho = $_POST['phone'];
 	$ema = $_POST['email'];
 	$pas = $_POST['password'];
-	$que = 'INSERT INTO users (name, lastname, age, phone, email, password) VALUES (?, ?, ?, ?, ?, ?)';
-	$stmt = mysqli_stmt_init($conn);
 
 	//name format validation
 	if (!preg_match("/^[a-zA-Zא-ת]*$/", $nam)){
@@ -65,23 +65,19 @@ if (isset($_POST['form-submit'])){
 	}
 	else{
 
-		if (!mysqli_stmt_prepare($stmt, $que)){
+			//set hebrew support when inserting data into table
+			mysqli_set_charset($conn, "utf8");
 
-			header("location:../signup.php?error=sqlerror");
-			exit();
-
-		}
-		else{
-
-			//add password security
+			//add password security by using a default hashing algorithm
 			$pwdHash = password_hash($pas, PASSWORD_DEFAULT);
 
-			//safely bind parameters and execute query
-			mysqli_stmt_bind_param($stmt, 'ssiiss', $nam, $las, $age, $pho, $ema, $pwdHash);
-			mysqli_stmt_execute($stmt);
+			//set and execute an INSERT query, use $conn as connection settings,
+			$query = 'INSERT INTO users (name, lastname, age, phone, email, password)
+			VALUES ("'.$nam.'", "'.$las.'", "'.$age.'", "'.$pho.'", "'.$ema.'", "'.$pwdHash.'")';
+			mysqli_query($conn, $query);
 
-			//configure session id and continue
-			$query = 'SELECT * FROM users WHERE email="'.$ema.'"';
+			//configure session id - use the value stored in the first column of the new row
+			$query = 'SELECT id FROM users WHERE email="'.$ema.'"';
 			$result = mysqli_query($conn, $query);
 			$row = mysqli_fetch_row($result);
 			session_start();
@@ -92,15 +88,12 @@ if (isset($_POST['form-submit'])){
 			exit();
 
 		}
-	}
-	//clean up
-	//mysqli_free_result($result);
-	mysqli_stmt_close($stmt);
-	mysqli_close($conn);
+
 }
+
 else{
 
-	//getting lost often?
+	//if user came here not by clicking submit, do nothing
 	header("location:../signup.php");
 	exit();
 
