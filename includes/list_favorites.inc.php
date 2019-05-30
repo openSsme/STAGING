@@ -48,8 +48,6 @@ if (isset($_SESSION['UID'])){
 			echo "			<button type='submit' name='adopt2' value='".$col[0]."'>המשך לאימוץ</button></a>"; //use this specific entry as reference for adoption - continue to adopt.php
 			echo "	</form>";
 			echo "</div>";
-			echo $list;
-			echo $_SESSION['EMA'];
 
 		}
 		echo "</div>";
