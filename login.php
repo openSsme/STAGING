@@ -19,7 +19,4 @@
     </div>
   </main>
 </body>
-<footer>
-  <small>2019 &copy; Copyright</small>
-</footer>
 </html>
