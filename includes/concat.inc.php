@@ -8,7 +8,15 @@ if (isset($_POST['q-submit'])){
 	require 'dbh.inc.php';
 
 	//store user input
-	$set .= $_POST['status'] . $_POST['location'] . $_POST['home'] .$_POST['family'] .	$_POST['pets'] . $_POST['alonetime'] .	$_POST['firsttime'] . $_POST['reachout'] .	$_POST['financial'] . $_POST['availability'] .	$_POST['reason'] . $_POST['challenges'] .	$_POST['trainer'] . $_POST['longterm'];
+	$set = "";
+	$set .=
+	$_POST['status'] . $_POST['location'] .
+	$_POST['home'] .$_POST['family'] .
+	$_POST['pets'] . $_POST['alonetime'] .
+	$_POST['firsttime'] . $_POST['reachout'] .
+	$_POST['financial'] . $_POST['availability'] .
+	$_POST['reason'] . $_POST['challenges'] .
+	$_POST['trainer'] . $_POST['longterm'];
 
 	//set and execute UPDATE query for users table
 	session_start();
