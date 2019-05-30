@@ -7,7 +7,7 @@ public!
     footer: copyright yo;
 
     private{
-        landing screen(
+        index screen(
             body:
                 h1: "bla bla bla? yes?";
                 button: goto login(login.inc.php);
@@ -21,16 +21,17 @@ public!
                 h1: "bla bla bla"
                 input text: #email;
                 input text: #password;
-                button: goto index(s.inc.php)); 
+                button: goto results(match.inc.php));
         )
     }
 
     private{
-        index screen(
+        results screen(
             body:
                 h1: "blaaaablablabla bla bla bla";
                 box[
-                    ordered clickable images: 
+                    ordered clickable images:
+                        button: run(fav.inc.php);
                         popup[
                             #image;
                             #name
@@ -47,12 +48,10 @@ public!
                             #vaccination;
                             #spay_neuter;
                             #url;
-                            #url;
-                            #url;
-                            button: goto adopt(fav.inc.php);
-                            button: goto index(s.inc.php);
+                            button: goto adopt(adoptme.inc.php);
+                            button: goto results(match.inc.php);
                         ]
-                    button: goto favorites(fav.inc.php);
+                    button: goto favorites(list_favorites.inc.php);
                 ]
         )
     }
@@ -63,8 +62,9 @@ public!
                 h1: "blaaaablablabla bla bla bla";
                 box[
                     ordered images;
-                    button: goto index(s.inc.php);
-                    button: goto adopt(fav.inc.php);
+                    button: run(fav.inc.php);
+                    button: goto results(match.inc.php);
+                    button: goto adopt(adoptme.inc.php);
                 ]
         )
     }
@@ -75,8 +75,8 @@ public!
                 h1: "blaaaaaaablabla";
                 text: "blaaaa blaaa";
                 text: "more bla";
-                button: goto index();
-                button: goto favorites(f.inc.php);
+                button: goto results(match.inc.php);
+                button: goto favorites(list_favorites.inc.php);
         )
     }
 
@@ -90,7 +90,7 @@ public!
                 input text: #phone;
                 input text: #email;
                 input text: #password;
-                button: goto questionnaire(q.inc.php);
+                button: goto questionnaire(concat.inc.php);
         )
     }
 
@@ -126,7 +126,7 @@ public!
                 dropdown: #sex;
                 dropdown: #size;
                 dropdown: #homefit;
-                button: goto index(s.inc.php);
+                button: goto results(match.inc.php);
         )
     }
 
@@ -148,7 +148,7 @@ secret!
                 #settings: BIGINT(30);
                 #pref;
             )
-        table: 
+        table:
             dogs(
                 #tag;
                 #location;
@@ -167,7 +167,7 @@ secret!
                 #pref;
                 #image;
             )
-        table: 
+        table:
             favorites(
                 #email;
                 #tag;
@@ -185,7 +185,7 @@ secret!
                 concatenate all input values and store result in variable
                 update table: users(column: #set value: variable)
             )
-            index(
+            results(
                 compare values in table: users(column: #pref, #set) with table: dogs(column: #pref, #set)
                 if they match:
                     display the value of column #image in table: dogs()
@@ -209,4 +209,3 @@ secret!
     ZJr2BMt8OckYugpGlmHa3NMUNqTKaJTcRUUQY7cIPPI=
     =Nt39
     -----END PGP MESSAGE-----
-    

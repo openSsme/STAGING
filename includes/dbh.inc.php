@@ -1,4 +1,4 @@
-<?php
+<?php //set connection settings:
 
 	$servername = "localhost";
 	$dBUsername = "root";
