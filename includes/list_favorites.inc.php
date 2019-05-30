@@ -7,18 +7,17 @@ if (isset($_SESSION['UID'])){
 	require 'dbh.inc.php';
 
 	//set SELECT query for favorites table to select all rows containing the session variable 'EMA'
-	$query = 'SELECT tag FROM favorites WHERE email="'.$_SESSION['EMA'].'"';
+	$query = 'SELECT * FROM favorites WHERE email="'.$_SESSION['EMA'].'"';
 
-	//store results in $result
+	//store results in $result, concatenate and save as $list
 	$result = mysqli_query($conn, $query);
+	$str= "";
 	while ($row = mysqli_fetch_assoc($result)){
 
-		$str= "";
 		$tag = $row['tag'];
 		$str .= $tag.","; //concatenate
-
 	}
-	$list = rtrim($str,", "); //trim result to make a valid sql statement
+	$list = rtrim($str,", "); //trim $list to make a valid sql statement below
 
 	//set and execute SELECT query for dogs table to select all rows containing the same values in $list
 	$query = 'SELECT * FROM dogs WHERE tag IN ('.$list.')';
@@ -49,6 +48,8 @@ if (isset($_SESSION['UID'])){
 			echo "			<button type='submit' name='adopt2' value='".$col[0]."'>המשך לאימוץ</button></a>"; //use this specific entry as reference for adoption - continue to adopt.php
 			echo "	</form>";
 			echo "</div>";
+			echo $list;
+			echo $_SESSION['EMA'];
 
 		}
 		echo "</div>";

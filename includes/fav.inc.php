@@ -6,30 +6,29 @@ if (isset($_POST['fav'])){
 	require 'dbh.inc.php';
 
 	//set and execute an INSERT query on favorites table, use session variables 'EMA' and 'FAV'
-	$query = 'INSERT INTO favorites (email, tag) VALUES ('.$_SESSION['EMA'].', '.$_POST['fav'].')';
+	session_start();
+	$query = 'INSERT INTO favorites (email, tag) VALUES ("'.$_SESSION['EMA'].'", "'.$_POST['fav'].'")';
 	mysqli_query($conn, $query);
-
-}
-else{
-
-	//if user did not click the add to favorites button, do nothing
-	header("location:../results.php");
+	header("location:../results.php?fav=added");
 	exit();
 
 }
-if (isset($_POST['ufav'])){
+else if (isset($_POST['ufav'])){
 
 	//db connection settings
 	require 'dbh.inc.php';
 
 	//set and execute an DELETE query on favorites table, use session variables 'EMA' and 'FAV'
-	$query = 'DELETE FROM favorites WHERE email="'.$_SESSION['EMA'].'" AND tag="'.$_POST['fav'].'"';
+	session_start();
+	$query = 'DELETE FROM favorites WHERE email="'.$_SESSION['EMA'].'" AND tag="'.$_POST['ufav'].'"';
 	mysqli_query($conn, $query);
+	header("location:../favorites.php?fav=removed");
+	exit();
 }
 else{
 
-	//if user did not click the remove from favorites button, do nothing
-	header("location:../favorites.php");
+	//if user did not click the favorite button, do nothing
+	header("location:../results.php");
 	exit();
 
 }
