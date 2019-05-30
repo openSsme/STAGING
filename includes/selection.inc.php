@@ -8,10 +8,7 @@ if (isset($_POST['submit-selection'])){
 	require 'dbh.inc.php';
 
 	//store user input
-	$prf .=
-	$_POST['area'] . $_POST['age'] .
-	$_POST['color'] . $_POST['sex'] .
-	$_POST['size'] . $_POST['homefit'];
+	$prf .=	$_POST['area'] . $_POST['age'] .	$_POST['color'] . $_POST['sex'] .	$_POST['size'] . $_POST['homefit'];
 
 	//set and execute UPDATE query, use $conn as connection settings
 	session_start();
