@@ -12,7 +12,7 @@ if (isset($_SESSION['UID'])){
 
 	if (!mysqli_stmt_prepare($stmt, $que1)){
 
-		header("location:../selection.php?error=sqlerror");
+		header("location:../results.php?error=sqlerror");
 		exit();
 
 	}

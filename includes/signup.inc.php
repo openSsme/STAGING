@@ -11,7 +11,7 @@ if (isset($_POST['form-submit'])){
 	$pho = $_POST['phone'];
 	$ema = $_POST['email'];
 	$pas = $_POST['password'];
-	$que = "INSERT INTO users (name, lastname, age, phone, email, password) VALUES (?, ?, ?, ?, ?, ?)";
+	$que = 'INSERT INTO users (name, lastname, age, phone, email, password) VALUES (?, ?, ?, ?, ?, ?)';
 	$stmt = mysqli_stmt_init($conn);
 
 	//name format validation
