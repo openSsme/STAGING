@@ -93,7 +93,7 @@
           <select name="availability" required>
             <option value="">האם אתה חושב שיש לך מספיק זמן לטיפול בכלב?</option>
             <option value="1">כן</option>
-            <option value="2">אולי</option>p questions for interview
+            <option value="2">אולי</option>
             <option value="3">לא</option>
           </select>
           <select name="reason" required>
