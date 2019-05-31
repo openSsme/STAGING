@@ -39,12 +39,12 @@ if (isset($_SESSION['UID'])){
 
 		for ($i = 0; $i < $rows;){ //iterate to support individual popups
 
-			foreach ($row as $col){ //display HTML
+			foreach ($row as $col){ //display HTML for each retreived row
 
 				// display matches
 				echo "<div class='entry'>";
-				echo "	<form class='content' action='includes/fav.inc.php' method='post'>"; //handle add/remove favorites here
-				echo "		<a class='button' href='#popup".$i."'>";$i++; //iterate here - link this to a popup
+				echo "	<form class='content' action='includes/fav.inc.php' method='post'>"; //this action will handle add/remove favorites
+				echo "		<a class='button' href='#popup".$i."'>";$i++; //iterate here - link to a popup
 				echo "			<img src='images/dogs/".$col[16]."' style='height:300px;border-radius:7px;'>";
 				echo "		</a>";
 				echo "		<button type='submit' name='fav' value='".$col[0]."'>"; //add to favorites

@@ -36,9 +36,11 @@ if (isset($_POST['login-submit'])){
 			//match entered password with hash from db
 			if (password_verify($pas, $row[6])){
 
-				//start session and continue
+				//start and set session id
 				session_start();
 				$_SESSION['UID'] = $row[0];
+
+				//continue
 				header("location:../results.php?login=success");
 				exit();
 

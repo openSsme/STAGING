@@ -1,5 +1,5 @@
-<?php //concatenate all user input and update column "pref" in table dogs
-			//with the result where user id match session id
+<?php //concatenate all user inputs into one int and store it in a variable, then update 'pref' column
+			//where the user id is the same as session id:
 
 //check if submit button clicked
 if (isset($_POST['submit-selection'])){
@@ -7,7 +7,7 @@ if (isset($_POST['submit-selection'])){
 	//db connection settings
 	require 'dbh.inc.php';
 
-	//store user input
+	//concat user input
 	$prf = "";
 	$prf .=
 	$_POST['area'] . $_POST['age'] .
