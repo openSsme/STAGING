@@ -15,9 +15,9 @@ if (isset($_SESSION['UID'])){
 	while ($row = mysqli_fetch_assoc($result)){
 
 		$tag = $row['tag'];
-		$str .= $tag.","; //concat
+		$str .= $tag.","; //concatenate, add delimiter: ','
 	}
-	$list = rtrim($str,", "); //trim $list to make a valid sql statement below. otherwise we'll have an extra ','
+	$list = rtrim($str,", "); //trim $list to make a valid sql statement below. otherwise we'll have an extra delimiter
 
 	//set and execute SELECT query for dogs table to select all rows containing the same values in $list
 	$query = 'SELECT * FROM dogs WHERE tag IN ('.$list.')';
