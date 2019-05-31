@@ -65,29 +65,29 @@ if (isset($_POST['form-submit'])){
 	}
 	else{
 
-			//set hebrew support when inserting data into table
-			mysqli_set_charset($conn, "utf8");
+		//set hebrew support when inserting data into table
+		mysqli_set_charset($conn, "utf8");
 
-			//add password security by using a default hashing algorithm
-			$pwdHash = password_hash($pas, PASSWORD_DEFAULT);
+		//add password security by using a default hashing algorithm
+		$pwdHash = password_hash($pas, PASSWORD_DEFAULT);
 
-			//set and execute an INSERT query, use $conn as connection settings,
-			$query = 'INSERT INTO users (name, lastname, age, phone, email, password)
-			VALUES ("'.$nam.'", "'.$las.'", "'.$age.'", "'.$pho.'", "'.$ema.'", "'.$pwdHash.'")';
-			mysqli_query($conn, $query);
+		//set and execute an INSERT query, use $conn as connection settings,
+		$query = 'INSERT INTO users (name, lastname, age, phone, email, password)
+		VALUES ("'.$nam.'", "'.$las.'", "'.$age.'", "'.$pho.'", "'.$ema.'", "'.$pwdHash.'")';
+		mysqli_query($conn, $query);
 
-			//configure session id - use the value stored in the first column of the new row we just inserted
-			$query = 'SELECT id FROM users WHERE email="'.$ema.'"';
-			$result = mysqli_query($conn, $query);
-			$row = mysqli_fetch_row($result);
-			session_start();
-			$_SESSION['UID'] = $row[0];
+		//configure session id - use the value stored in the first column of the new row we just inserted
+		$query = 'SELECT id FROM users WHERE email="'.$ema.'"';
+		$result = mysqli_query($conn, $query);
+		$row = mysqli_fetch_row($result);
+		session_start();
+		$_SESSION['UID'] = $row[0];
 
-			//continue
-			header("location:../questionnaire.php?signup=success");
-			exit();
+		//continue
+		header("location:../questionnaire.php?signup=success");
+		exit();
 
-		}
+	}
 
 }
 
