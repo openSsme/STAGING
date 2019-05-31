@@ -12,7 +12,7 @@
         <h1>התחברות</h1>
         <form action="includes/login.inc.php" method="post">
           <input type="text" name="email" placeholder="שם משתמש" autofocus required>
-          <input type="password" name="password" placeholder="סיסמא" required>
+          <input type="password" name="password" placeholder="סיסמא" maxlength="8" required>
           <button type="submit" name="login-submit">התחבר</button>
         </form>
       </section>
