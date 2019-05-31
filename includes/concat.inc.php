@@ -1,4 +1,4 @@
-<?php //concatenate all user inputs into a variable and update 'settings' column
+<?php //concatenate all user inputs into one int and store it in a variable, then update 'settings' column
  			//where the user id is the same as session id:
 
 //check if submit button clicked
@@ -7,7 +7,7 @@ if (isset($_POST['q-submit'])){
 	//db connection settings
 	require 'dbh.inc.php';
 
-	//store user input
+	//concat user input
 	$set = "";
 	$set .=
 	$_POST['status'] . $_POST['location'] .
