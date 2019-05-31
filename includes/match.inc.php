@@ -94,7 +94,7 @@ if (isset($_SESSION['UID'])){
 				echo "					<button type='submit' name='adopt' value='".$pop[0]."'>המשך לאימוץ</button>"; //use this specific entry as reference for adoption - continue to adopt.php
 				echo "				</form>";
 				echo "			</div>";
-				echo "			<img src='images/".$pop[16]."'>";
+				echo "			<img src='images/dogs/".$pop[16]."'>";
 				echo "		</div>";
 				echo "	</div>";
 				echo "</div>";
