@@ -36,7 +36,7 @@ if (isset($_SESSION['UID'])){
 			//display favorites
 			echo "<div class='entry'>";
 			echo "	<form class='content' action='includes/fav.inc.php' method='post'>"; //handle add/remove favorites here
-			echo "		<img src='images/".$col[16]."' id='favimg'>";
+			echo "		<img src='images/dogs/".$col[16]."' id='favimg'>";
 			echo "			<button type='submit' name='ufav' value='".$col[0]."'>"; //remove from favorites
 			echo "				<img src='images/star.png' height='30' />";
 			echo "			</button>";

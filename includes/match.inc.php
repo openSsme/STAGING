@@ -45,7 +45,7 @@ if (isset($_SESSION['UID'])){
 				echo "<div class='entry'>";
 				echo "	<form class='content' action='includes/fav.inc.php' method='post'>"; //handle add/remove favorites here
 				echo "		<a class='button' href='#popup".$i."'>";$i++; //iterate here - link this to a popup
-				echo "			<img src='images/".$col[16]."' style='height:300px;border-radius:7px;'>";
+				echo "			<img src='images/dogs/".$col[16]."' style='height:300px;border-radius:7px;'>";
 				echo "		</a>";
 				echo "		<button type='submit' name='fav' value='".$col[0]."'>"; //add to favorites
 				echo "			<img src='images/star.png' id='addfav' height='30' />";
