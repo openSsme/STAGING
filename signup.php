@@ -17,7 +17,7 @@
           <input type="text" name="age" placeholder="גיל" required>
           <input type="text" name="phone" placeholder="טלפון" required>
           <input type="text" name="email" placeholder="אימייל" required>
-          <input type="password" name="password" placeholder="סיסמא" required>
+          <input type="password" name="password" placeholder="סיסמא" maxlength="8" required>
           <button type="submit" name="form-submit">הרשמה</button>
         </form>
       </section>
