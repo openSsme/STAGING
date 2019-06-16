@@ -7,9 +7,10 @@ if (isset($_POST['q-submit'])){
 	//db connection settings
 	require 'dbh.inc.php';
 
+	session_start();
 	//concat user input
-	$set = "";
-	$set .=
+	$_SESSION['SET'] = "";
+	$_SESSION['SET'] .=
 	$_POST['status'] . $_POST['location'] .
 	$_POST['home'] .$_POST['family'] .
 	$_POST['pets'] . $_POST['alonetime'] .
@@ -19,8 +20,7 @@ if (isset($_POST['q-submit'])){
 	$_POST['trainer'] . $_POST['longterm'];
 
 	//set and execute UPDATE query for users table
-	session_start();
-	$query = 'UPDATE users SET settings="'.$set.'" WHERE id="'.$_SESSION['UID'].'"';
+	$query = 'UPDATE users SET settings="'.$_SESSION['SET'].'" WHERE id="'.$_SESSION['UID'].'"';
 	mysqli_query($conn, $query);
 
 	//continue

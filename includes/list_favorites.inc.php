@@ -21,10 +21,9 @@ if (isset($_SESSION['UID'])){
 
 	//set and execute SELECT query for dogs table to select all rows containing the same values in $list
 	$query = 'SELECT * FROM dogs WHERE tag IN ('.$list.')';
-	$result = mysqli_query($conn, $query);
+	if($result = mysqli_query($conn, $query)){
 
-	//only if $query contains something:
-	if($row = mysqli_fetch_all($result)){
+		$row = mysqli_fetch_all($result);
 
 		//for each retreived row display an image on the page with
 		//a remove from favorites button..
@@ -55,7 +54,7 @@ if (isset($_SESSION['UID'])){
 	}
 	else{
 
-		echo "NO RESULTS";
+		echo "NO FAVORITES";
 		exit();
 
 	}

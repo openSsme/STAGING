@@ -108,7 +108,7 @@
             <option value="1">כן</option>
             <option value="2">לא</option>
           </select>
-        </section>
+        </section><br>
         <!-- new section -->
         <section class="section-Q">
           <select name="trainer" required>

@@ -49,6 +49,12 @@ if (isset($_POST['form-submit'])){
 		exit();
 
 	}
+	else if (strlen($pho < 10)){
+
+		header("location:../signup.php?error=invalidphone");
+		exit();
+
+	}
 	//email format validation
 	else if(!filter_var($ema, FILTER_VALIDATE_EMAIL)){
 
