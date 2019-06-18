@@ -5,7 +5,10 @@ if (isset($_POST['submit-selection'])){
 
 	require 'dbh.inc.php';
 
-	$prf .= $_POST['area'] . $_POST['age'] . $_POST['color'] . $_POST['sex'] . $_POST['size'] . $_POST['homefit'];
+	$prf .=
+	$_POST['area'] . $_POST['age'] .
+	$_POST['color'] . $_POST['sex'] .
+	$_POST['size'] . $_POST['homefit'];
 
 	$que = 'UPDATE users SET pref=? where id=?';
 	$stmt = mysqli_stmt_init($conn);
