@@ -86,6 +86,7 @@ if (isset($_POST['form-submit'])){
 			$row = mysqli_fetch_row($result);
 			session_start();
 			$_SESSION['UID'] = $row[0];
+			$_SESSION['EMA'] = $row[5];
 
 			//continue
 			header("location:../questionnaire.php?signup=success");

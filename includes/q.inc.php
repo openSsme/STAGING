@@ -5,8 +5,9 @@ if (isset($_POST['q-submit'])){
 
 	require 'dbh.inc.php';
 
-	$set .=
-		$_POST['status'] . $_POST['location'] . $_POST['home'] .$_POST['family'] . $_POST['pets'] .
+	session_start();
+	$_SESSION['SET'] .=
+		$_POST['status'] . $_POST['area'] . $_POST['home'] .$_POST['family'] . $_POST['pets'] .
 		$_POST['alonetime'] . $_POST['firsttime'] . $_POST['reachout'] . $_POST['financial'] . $_POST['availability'] .
 		$_POST['reason'] . $_POST['challenges'] . $_POST['trainer'] . $_POST['longterm'];
 
@@ -22,8 +23,7 @@ if (isset($_POST['q-submit'])){
 	}
 	else{
 		//start session, safely bind parameters and execute query
-		session_start();
-		mysqli_stmt_bind_param($stmt, 'ii', $set, $_SESSION['UID']);
+		mysqli_stmt_bind_param($stmt, 'ii', $_SESSION['SET'], $_SESSION['UID']);
 		mysqli_stmt_execute($stmt);
 
 		//continue

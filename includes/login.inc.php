@@ -35,6 +35,9 @@ if (isset($_POST['login-submit'])){
 		}
 		else{
 
+			//set hebrew support
+			mysqli_set_charset($conn, "utf8");
+
 			//safely bind parameters and execute query
 			mysqli_stmt_bind_param($stmt, 's', $ema);
 			mysqli_stmt_execute($stmt);
@@ -49,7 +52,9 @@ if (isset($_POST['login-submit'])){
 					//start session and continue
 					session_start();
 					$_SESSION['UID'] = $row['id'];
-					//$_SESSION['EMA'] = $row['email'];
+					$_SESSION['EMA'] = $row['email'];
+					$_SESSION['SET'] = $row['settings'];
+					$_SESSION['PRF'] = $row['pref'];
 
 					//continue
 					header("location:../results.php?login=success");

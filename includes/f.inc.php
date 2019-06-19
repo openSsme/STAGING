@@ -38,7 +38,7 @@ if (isset($_SESSION['UID'])){
 
 				echo "<div class='entry'>";
 				echo "	<form class='content' action='includes/fav.inc.php' method='post'>";
-				echo "		<img src='images/".$col[16]."' id='favimg'>";
+				echo "		<img src='images/dogs/".$col[15]."' id='favimg'>";
 				echo "			<button type='submit' name='ufav' value='".$col[0]."'>";
 				echo "				<img src='images/star.png' height='30' />";
 				echo "			</button>";

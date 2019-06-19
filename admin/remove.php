@@ -3,15 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <title>Admin</title>
-  <link href="stylesheet.css" rel=stylesheet type="text/css"/>
+  <link href="../stylesheet.css" rel=stylesheet type="text/css"/>
 </head>
 <body>
   <main>
     <div class="wrapper-main">
       <section class="section-default">
-        <h1>ניהול רשומות כלבים</h1>
-        <a href="new.php"><button>הוסף למאגר</button></a>
-        <a href="remove.php"><button>הסר מהמאגר</button></a>
+        <h1>הסרה מהמאגר</h1>
+        <a href="admin.php"><button>חזור</button></a>
+        <?php
+        require "r.inc.php";
+        ?>
+        <a href="admin.php"><button>חזור</button></a>
       </section>
     </div>
   </main>
